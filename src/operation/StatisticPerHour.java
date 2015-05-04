@@ -10,7 +10,7 @@ import java.io.IOException;
 import main.config;
 
 public class StatisticPerHour extends AbsReadFile {
-	public static String out_file_path = config.statistic_out;
+	public static String out_file_path = "D:\\Documents\\MASTER\\START\\experiments\\区域转移\\step2\\logs.txt";
 	/**
 	 * 暂不使用，结构体，用于统计前10个
 	 * @author yangwenjing01
@@ -61,7 +61,9 @@ public class StatisticPerHour extends AbsReadFile {
 			while((line = reader.readLine())!=null)
 			{
 				String[] s = line.split("\t");
-				int event_num= Integer.parseInt(s[3]);
+				if(s.length<3)
+					continue;
+				int event_num= Integer.parseInt(s[2]);
 				event_sum += event_num;
 				cells_count++;
 				//判断是否是最大值
@@ -97,9 +99,9 @@ public class StatisticPerHour extends AbsReadFile {
 		// TODO Auto-generated method stub
 		
 		StatisticPerHour rwf = new  StatisticPerHour();
-		
+		String files_in = "D:\\Documents\\MASTER\\START\\experiments\\区域转移\\step2\\out";
 		try {
-			rwf.readfile(config.split2Hours_out);
+			rwf.readfile(files_in);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

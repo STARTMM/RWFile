@@ -33,6 +33,7 @@ public class ReadMatrixFile2 extends AbsReadFile {
 	
 	public static int scaleCount = 0;
 	
+	public static int size = 120;
 	public static String getKey(int x, int y) {
 		String key = String.format("%d_%d", x,y);
 		return key;

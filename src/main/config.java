@@ -12,8 +12,8 @@ public class config {
 	public static String nodes_files_in_dir = "C:\\step22-3";
 	public static String txt_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\区域识别\\event1";
 	public static String output_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\区域识别\\output";
-	public static int threshold=121;
-	public static int regionScale=150;
+	public static int threshold=50;
+	public static int regionScale=100;
 	public static int regionCount=200;
 	public static String adjFileout="";
 	public static String contactsOutFile="D:\\trace\\step2";
@@ -31,7 +31,7 @@ public class config {
 	 * config for SpiltFile2Hour
 	 */
 	public static String split2Hours_out="D:\\Documents\\MASTER\\START\\experiments\\区域转移\\out";
-	public static String split2Hours_in="D:\\Documents\\MASTER\\START\\experiments\\区域转移\\区域转移";
+	public static String split2Hours_in="D:\\Documents\\MASTER\\START\\experiments\\区域转移\\区域转移\\1-14";
 	
 	/**
 	 * 对每个小时统计
