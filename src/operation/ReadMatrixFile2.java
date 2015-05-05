@@ -25,13 +25,15 @@ import entity.Queue;
  */
 public class ReadMatrixFile2 extends AbsReadFile {
 	public static List<Cell> cellList = new ArrayList<Cell>();//用于读取cell
-	public static String out_file_path = config.output_file_dir;
+	public static String out_file_path = "D:\\Documents\\MASTER\\START\\experiments\\区域转移\\step3\\";
 	public static HashMap<String, Cell> cellsMap=new HashMap<String, Cell>();
 	public static Queue<Cell> queue = new Queue<Cell>();//初始化队列
 	public static int threshold = config.threshold;
 	public static int regionScale = config.regionScale;
 	
 	public static int scaleCount = 0;
+	
+	public static int regionCount_for_density = config.regionCount+200;
 	
 	public static int size = 120;
 	public static String getKey(int x, int y) {
@@ -56,7 +58,10 @@ public class ReadMatrixFile2 extends AbsReadFile {
 				if(line=="")
 					continue;
 				
+			
 				String[]arrl = line.split("\t");
+				if(arrl.length<3)
+					continue;
 				int x = Integer.parseInt(arrl[0]);
 				int y = Integer.parseInt(arrl[1]);
 				int num = Integer.parseInt(arrl[2]);
@@ -77,9 +82,9 @@ public class ReadMatrixFile2 extends AbsReadFile {
 			/**
 			 * 补充区域为0的点
 			 */
-			for(int i=0;i<100;i++)
+			for(int i=0;i<size;i++)
 			{
-				for(int j=0;j<100;j++)
+				for(int j=0;j<size;j++)
 				{
 					String key = getKey(i,j);
 					if(!cellsMap.containsKey(key))
@@ -115,9 +120,9 @@ public class ReadMatrixFile2 extends AbsReadFile {
 		System.out.println("处理节点文件"+file.getName());
 		FileWriter fw = new FileWriter(fileout);
 		String key;
-		for(int i=0;i<100;i++)
+		for(int i=0;i<size;i++)
 		{
-			for(int j=0;j<100;j++)
+			for(int j=0;j<size;j++)
 			{
 				key = getKey(i,j);
 				if(cellsMap.containsKey(key))
@@ -129,6 +134,7 @@ public class ReadMatrixFile2 extends AbsReadFile {
 					fw.write(i+" "+j+" 0 0"+"\r\n\r\n");
 				}
 			}
+			fw.write("\r\n");
 		}
 		fw.close();
 		
@@ -162,9 +168,18 @@ public class ReadMatrixFile2 extends AbsReadFile {
 					while(!queue.isEmpty())
 					{
 						
+						
 						Cell pcell = queue.dequeue();
+						pcell.setCluster();
 						pcell.setUsed();
-						if(pass(c))
+						scaleCount++;
+						if(scaleCount>=regionScale)
+						{
+							queue.clearQueue();
+							break;
+						}
+						
+						if(pass(c)&&c.cluster<=regionCount_for_density)
 						{
 							enqueueNext(pcell.x, pcell.y-1);
 							enqueueNext(pcell.x-1,pcell.y);
@@ -197,8 +212,8 @@ public class ReadMatrixFile2 extends AbsReadFile {
 	 * @param y
 	 */
 	public void enqueueNext(int x, int y) {
-		if(scaleCount>regionScale)
-			return;
+//		if(scaleCount>regionScale)
+//			return;
 		String key;
 		key = getKey(x,y);
 		
@@ -207,8 +222,8 @@ public class ReadMatrixFile2 extends AbsReadFile {
 			Cell next=cellsMap.get(key);
 			if(!next.isUsed())
 			{
-				next.setCluster();
-				scaleCount++;
+//				next.setCluster();
+//				scaleCount++;
 				queue.enqueue(next);
 			}
 		}
@@ -220,18 +235,20 @@ public class ReadMatrixFile2 extends AbsReadFile {
 	 * @param y
 	 */
 	public void enqueueNext_for_parse(int x, int y) {
-		if(scaleCount>regionScale)
-			return;
+// 		if(scaleCount>regionScale)
+//			return;
 		String key;
 		key = getKey(x,y);
 		
-		if(cellsMap.containsKey(key)&&!pass(cellsMap.get(key)))
+//		if(cellsMap.containsKey(key)&&!pass(cellsMap.get(key)))
+		//如果存在这个点
+		if(cellsMap.containsKey(key))
 		{
 			Cell next=cellsMap.get(key);
 			if(!next.isUsed())
 			{
 				next.setCluster();
-				scaleCount++;
+//				scaleCount++;
 				queue.enqueue(next);
 			}
 		}
@@ -244,8 +261,9 @@ public class ReadMatrixFile2 extends AbsReadFile {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ReadMatrixFile2 readMatrixFile = new ReadMatrixFile2();
+		String file_in = "D:\\Documents\\MASTER\\START\\experiments\\区域转移\\step2\\out\\20111101-20111107-hour13-20-event1.txt";
 		try{
-			readMatrixFile.readfile(config.txt_file_dir);
+			readMatrixFile.readfile(file_in);
 			
 		}catch(FileNotFoundException e)
 		{

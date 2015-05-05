@@ -63,6 +63,7 @@ public class SpiltFile2Hour extends AbsReadFile {
 		// TODO Auto-generated method stub
 		//Éú³ÉÊµÀý
 		SpiltFile2Hour rwf = new SpiltFile2Hour();
+		
 		try {
 			rwf.readfile(config.split2Hours_in);
 		} catch (FileNotFoundException e) {

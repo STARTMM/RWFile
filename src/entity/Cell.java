@@ -8,13 +8,13 @@ public class Cell implements Comparable<Cell>{
 	public int x;
 	public int y;
 	public int num;
-	public int cluster=0;//代表所在的区域编号， 为-1时为没有编号。
+	public int cluster=config.regionCount;;//代表所在的区域编号， 为-1时为没有编号。
 	public static int clusterCount = config.regionCount;
 	
 	private boolean used;
 	public static void addClusterCounter()
 	{
-		clusterCount--;
+		clusterCount++;
 	}
 	
 	public void setCluster()
@@ -52,6 +52,7 @@ public class Cell implements Comparable<Cell>{
 	@Override
 	public int compareTo(Cell c)
 	{	
+		if(this.num==c.num)return 0;
 		return this.num>=c.num?-1:1;
 	}
 	

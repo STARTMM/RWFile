@@ -32,6 +32,13 @@ public class Queue<E> {
 		rear=0;
 	}
 	
+	public void clearQueue()
+	{
+		a = (E[])(new Object[DEFAULT_SIZE]);
+		front = 0;
+		rear = 0;
+	}
+	
 	/**
 	 * 将一个对象追加到队列尾部
 	 * @param obj

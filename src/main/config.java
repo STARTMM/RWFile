@@ -12,9 +12,9 @@ public class config {
 	public static String nodes_files_in_dir = "C:\\step22-3";
 	public static String txt_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\区域识别\\event1";
 	public static String output_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\区域识别\\output";
-	public static int threshold=50;
-	public static int regionScale=100;
-	public static int regionCount=200;
+	public static int threshold=180;
+	public static int regionScale=500;
+	public static int regionCount=2000;
 	public static String adjFileout="";
 	public static String contactsOutFile="D:\\trace\\step2";
 	public static String trace_files_in="D:\\trace\\step1";

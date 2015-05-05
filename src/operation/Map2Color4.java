@@ -24,11 +24,15 @@ import entity.Queue;
  */
 public class Map2Color4 extends AbsReadFile {
 	public static List<Cell> cellList = new ArrayList<Cell>();//用于读取cell
-	public static String out_file_path = config.output_file_dir;
+	public static String out_file_path = "D:\\Documents\\MASTER\\START\\experiments\\区域转移\\step4-print";
 	public static HashMap<String, Cell> cellsMap=new HashMap<String, Cell>();
 	public static Queue<AdjRelationShip> queue = new Queue<AdjRelationShip>();//初始化队列
 	public static int threshold = config.threshold;
 	public static int regionScale = config.regionScale;
+	
+	
+	public static int size = 120;
+	
 	
 	public static int scaleCount = 0;
 	
@@ -57,7 +61,9 @@ public class Map2Color4 extends AbsReadFile {
 				if(line=="")
 					continue;
 				
-				String[]arrl = line.split("\t");
+				String[]arrl = line.split(" ");
+				if(arrl.length<4)
+					continue;
 				int x = Integer.parseInt(arrl[0]);
 				int y = Integer.parseInt(arrl[1]);
 				int id = Integer.parseInt(arrl[3]);
@@ -72,9 +78,9 @@ public class Map2Color4 extends AbsReadFile {
 			/**
 			 * 建立关系
 			 */
-			for(int x=0;x<100;x++)
+			for(int x=0;x<size;x++)
 			{
-				for(int y=0;y<100;y++)
+				for(int y=0;y<size;y++)
 				{
 					findNeighbors(x,y);
 				}
@@ -113,15 +119,15 @@ public class Map2Color4 extends AbsReadFile {
 			/**
 			 * 输出最后的值
 			 */
-			for(int x=0;x<100;x++)
+			for(int x=0;x<size;x++)
 			{
-				for(int y=0;y<100;y++)
+				for(int y=0;y<size;y++)
 				{
 					AdjRelationShip adj = getAdjRelationShipBy(x,y);
 					fw.write(String.format("%d %d %d %d\r\n", x,y,adj.id, adj.color));
 					//System.out.println(String.format("%d %d %d %d", x,y,adj.id,adj.color));
 				}
-				//fw.write(String.format("\r\n"));
+				fw.write(String.format("\r\n"));
 			}
 			
 			fw.close();
@@ -212,8 +218,9 @@ public class Map2Color4 extends AbsReadFile {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Map2Color4 readMatrixFile = new Map2Color4();
+		String file_in = "D:\\Documents\\MASTER\\START\\experiments\\区域转移\\step3\\20111101-20111107-hour0-8-event0.txt";
 		try{
-			readMatrixFile.readfile(config.txt_file_dir);
+			readMatrixFile.readfile(file_in);
 			
 		}catch(FileNotFoundException e)
 		{
