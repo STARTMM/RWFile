@@ -11,7 +11,7 @@ public class TraceNode implements Comparable<TraceNode>{
 	public TraceNode(int taxiid, int time, double lon, double lat)
 	{
 		this.taxiid = taxiid;
-		this.id = id;
+//		this.id = id;
 		this.time = time;
 		this.lon = lon;
 		this.lat = lat;

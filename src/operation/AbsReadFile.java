@@ -7,7 +7,7 @@ import java.io.IOException;
 public abstract class AbsReadFile {
 	
 	/*
-     * ╤ах║дЁ╦Жнд╪Ч╪поб╣дкЫспнд╪Ч
+     * О©╫О©╫х║дЁО©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫б╣О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫
      */
     public boolean readfile(String filepath) throws FileNotFoundException, IOException {
             try {
@@ -17,14 +17,14 @@ public abstract class AbsReadFile {
                             dealWithFile(file);
 
                     } else if (file.isDirectory()) {
-                            //System.out.println("нд╪Ч╪п");
+                            //System.out.println("О©╫д╪О©╫О©╫О©╫");
                             String[] filelist = file.list();
                             for (int i = 0; i < filelist.length; i++) {
-                                    File readfile = new File(filepath + "\\" + filelist[i]);
+                                    File readfile = new File(filepath + "/" + filelist[i]);
                                     if (!readfile.isDirectory()) {
                                     	dealWithFile(readfile);
                                     } else if (readfile.isDirectory()) {
-                                            readfile(filepath + "\\" + filelist[i]);
+                                            readfile(filepath + "/" + filelist[i]);
                                     }
                             }
 

@@ -10,8 +10,8 @@ package main;
 public class config {
 	public static String segments_file_in_Name = "D:\\beijingroad\\beijingroad_subMap-print-0.4-0_1.wkt";
 	public static String nodes_files_in_dir = "C:\\step22-3";
-	public static String txt_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\ÇøÓòÊ¶±ð\\event1";
-	public static String output_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\ÇøÓòÊ¶±ð\\output";
+	public static String txt_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½\\event1";
+	public static String output_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½\\output";
 	public static int threshold=121;
 	public static int regionScale=150;
 	public static int regionCount=200;
@@ -21,7 +21,7 @@ public class config {
 	public static String formated_trace_dir="";
 	public static String event_dis_in="C:\\Users\\chnhideyoshi\\Desktop\\event_dis\\100X100";
 	public static String event_dis_out="C:\\Users\\chnhideyoshi\\Desktop\\event_dis\\90X75";
-	public static String mif2txt_dir="C:\\Users\\chnhideyoshi\\Desktop\\road\\out";
+	public static String mif2txt_dir="/Users/ywj/Documents/road/out";
 	public static String contactsOutFile_step2="D:\\trace\\step3";
 	public static String contactsOutFile_step3="D:\\trace\\step4";
 	public static String ict_out_put="D:\\ICT\\out";
@@ -30,13 +30,13 @@ public class config {
 	/**
 	 * config for SpiltFile2Hour
 	 */
-	public static String split2Hours_out="D:\\Documents\\MASTER\\START\\experiments\\ÇøÓò×ªÒÆ\\out";
-	public static String split2Hours_in="D:\\Documents\\MASTER\\START\\experiments\\ÇøÓò×ªÒÆ\\ÇøÓò×ªÒÆ";
+	public static String split2Hours_out="D:\\Documents\\MASTER\\START\\experiments\\ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½\\out";
+	public static String split2Hours_in="D:\\Documents\\MASTER\\START\\experiments\\ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½\\ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½";
 	
 	/**
-	 * ¶ÔÃ¿¸öÐ¡Ê±Í³¼Æ
+	 * ï¿½ï¿½Ã¿ï¿½ï¿½Ð¡Ê±Í³ï¿½ï¿½
 	 */
 	
-	public static String statistic_out="D:\\Documents\\MASTER\\START\\experiments\\ÇøÓò×ªÒÆ\\event_log.txt";
+	public static String statistic_out="D:\\Documents\\MASTER\\START\\experiments\\ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½\\event_log.txt";
 
 }

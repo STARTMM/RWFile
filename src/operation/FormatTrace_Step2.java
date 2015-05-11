@@ -22,13 +22,13 @@ public class FormatTrace_Step2 extends AbsReadFile {
 	public static int tix = 5;
 	
 	/**
-	 * ¶ÁÈëÒ»¸öÎÄ¼þ
-	 * ¶ÔÊý¾ÝÅÅÐò
-	 * ¶ÔÊý¾Ý½øÐÐ²åÖµ
+	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½Ð²ï¿½Öµ
 	 */
 	@Override
 	public void dealWithFile(File file) {
-		// TODO ¶ÁÈëÎÄ¼þ
+		// TODO ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 		FileReader fr;
 		traces =  new LinkedList<TraceNode>();
 		counter++;
@@ -39,11 +39,11 @@ public class FormatTrace_Step2 extends AbsReadFile {
 		
 			String line;
 			
-			System.out.println("´¦Àí½ÚµãÎÄ¼þ"+file.getName());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Ä¼ï¿½"+file.getName());
 		
 			
-			//¶ÁÈëÊý¾Ý
-			System.out.println("¶ÁÎÄ¼þ"+file.getName());
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			System.out.println("ï¿½ï¿½ï¿½Ä¼ï¿½"+file.getName());
 			while((line = reader.readLine())!=null)
 			{
 				String[] s = line.split(" ");
@@ -57,14 +57,14 @@ public class FormatTrace_Step2 extends AbsReadFile {
 			reader.close();
 			fr.close();
 			
-			//ÅÅÐò
-			System.out.println("ÅÅÐò:"+file.getName());
+			//ï¿½ï¿½ï¿½ï¿½
+			System.out.println("ï¿½ï¿½ï¿½ï¿½:"+file.getName());
 			Collections.sort(traces);
 			
-			//²åÖµ
+			//ï¿½ï¿½Öµ
 			System.out.println("insert:"+file.getName());
 			
-			//output_tracesÕ»¶¥Èë¶Ó¡£
+			//output_tracesÕ»ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½
 			int index = 0;
 			TraceNode tn0 = traces.get(index);
 			
@@ -107,14 +107,14 @@ public class FormatTrace_Step2 extends AbsReadFile {
 				TraceNode tn = getThirdTN(tn0, tn1, time);
 				if(tn==null)
 				{
-					System.out.println("³ö´íÁËÕ¦°ì£¿¡£¡£¡£");
+					System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¦ï¿½ì£¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					continue;
 				}
 				output_traces.add(tn);
 			}
 			
 			/**
-			 * ´òÓ¡
+			 * ï¿½ï¿½Ó¡
 			 */
 			System.out.println("Print:"+file.getName());
 			File fileout = new File(out_file_path +"\\"+file.getName());
@@ -152,7 +152,10 @@ public class FormatTrace_Step2 extends AbsReadFile {
 		//lat = (lat<0?0:lat);
 		//lon = (lon>24445?24445:lon);
 		//lat = (lat>23584?23584:lat);
-		return new TraceNode(tn1.id,time,lon,lat);
+//		return new TraceNode(tn1.id,time,lon,lat);
+//		return new TraceNode();
+		System.out.println("FormatTrace_step2....");
+		return null;
 	}
 
 	public static void main(String[] args)

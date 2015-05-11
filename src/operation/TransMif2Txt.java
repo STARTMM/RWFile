@@ -11,14 +11,14 @@ import main.config;
 import main.config_map_trans;
 
 /***
- * ½«µØÍ¼MifÊý¾Ý£¬µ¼³Étxt¸ñÊ½£º
- * ÊäÈë:
+ * ï¿½ï¿½ï¿½ï¿½Í¼Mifï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½txtï¿½ï¿½Ê½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½:
  * Pline 24
 117.15342 40.66604
 117.15368 40.66664
 117.15333 40.66832
  * 
- * Êä³ö:
+ * ï¿½ï¿½ï¿½:
  * Lon lat roadid type
  * @author Yang Wenjing
  *
@@ -36,16 +36,16 @@ public class TransMif2Txt extends AbsReadFile {
 
 	public void setType(String name)
 	{
-		if(name.contains("Ò»"))
+		if(name.contains("1"))
 		{
 			System.out.println("**type is 1**");
 			type="1";
 		}
-		else if(name.contains("¶þ"))
+		else if(name.contains("2"))
 		{
 			System.out.println("**type is 2**");
 			type="2";
-		}else if(name.contains("Èý"))
+		}else if(name.contains("3"))
 		{
 			System.out.println("**type is 3**");
 			type="3";
@@ -67,28 +67,28 @@ public class TransMif2Txt extends AbsReadFile {
 			FileWriter fw = new FileWriter(fileout);
 			
 			String line;
-			setType(file.getName());//Ã¿¶ÁÈ¡Ò»¸öfileÎÄ¼þ£¬¶¼ÉèÖÃÒ»¸öÐÂµÄtype.
+			setType(file.getName());//
 			
 			while((line = reader.readLine())!=null)
 			{
 				
-				if("".equals(line.trim()))//¶Áµ½¿ÕÐÐÌø¹ý
+				if("".equals(line.trim()))//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				{
 					continue;
 				}
 				line = line.trim();
 				String []s = line.split(" ");
-				if(line.contains("Pen"))//¶Áµ½PenÌø¹ý
+				if(line.contains("Pen"))//ï¿½ï¿½ï¿½ï¿½Penï¿½ï¿½ï¿½
 					continue;
 				
-				if(line.contains("Pline")||line.contains("Line"))//¶Áµ½LineºÍPLineµÄÊ±ºò road id++;
+				if(line.contains("Pline")||line.contains("Line"))//ï¿½ï¿½ï¿½ï¿½Lineï¿½ï¿½PLineï¿½ï¿½Ê±ï¿½ï¿½ road id++;
 				{
 					//System.out.println(s[0]+"-"+s[1]);
 					setRoadId();
 					//System.out.println(road_id);
 				}
 				
-				if(line.contains("Line"))//´¦ÀíLineµÄÇé¿ö¡£
+				if(line.contains("Line"))//ï¿½ï¿½ï¿½ï¿½Lineï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				{
 					//System.out.println(line);
 					System.out.println(String.format("%s-%s-%s-%s-%s", s[0],s[1],s[2],s[3],s[4]));
@@ -126,7 +126,7 @@ public class TransMif2Txt extends AbsReadFile {
 //		s = s.trim();
 //		System.out.println(s);
 		
-		String dir_in="C:\\Users\\chnhideyoshi\\Desktop\\road\\in";
+		String dir_in="/Users/ywj/Documents/road/in";
 		
 		TransMif2Txt readfile = new TransMif2Txt();
 		try{

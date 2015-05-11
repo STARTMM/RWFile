@@ -12,8 +12,8 @@ import entity.RoadNode;
 import entity.Queue;
 
 public class ExtractSubMap extends AbsReadFile {
-	public static String out_file_dir = "C:\\Users\\chnhideyoshi\\Desktop\\road\\map2009_out_2.wkt";
-	public static String out_file_dir_2 = "C:\\Users\\chnhideyoshi\\Desktop\\road\\";
+	public static String out_file_dir = "/Users/ywj/Documents/road/SubMap/map2009_out_2.wkt";
+	public static String out_file_dir_2 = "/Users/ywj/Documents/road/SubMap";
 	
 	public List<RoadNode> used_nodes = new ArrayList<RoadNode>();
 	public List<RoadNode> output_nodes = new ArrayList<RoadNode>();
@@ -132,7 +132,9 @@ public class ExtractSubMap extends AbsReadFile {
 			RoadNode node_next = null;
 			while((line = reader.readLine())!=null)
 			{
-				String s[] = line.trim().split("\t");
+				String s[] = line.trim().split(" ");
+				if(s.length!=4)
+					continue;
 				double lon = Double.parseDouble(s[0]);
 				double lat = Double.parseDouble(s[1]);
 				int road_id = Integer.parseInt(s[2]);
@@ -176,7 +178,7 @@ public class ExtractSubMap extends AbsReadFile {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String dir_in = "C:\\Users\\chnhideyoshi\\Desktop\\road\\map2009.txt";
+		String dir_in = "/Users/ywj/Documents/road/out_meter.txt";
 		ExtractSubMap readfile = new ExtractSubMap();
 		try{
 			readfile.readfile(dir_in);

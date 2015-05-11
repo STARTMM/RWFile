@@ -17,10 +17,8 @@ public class getTranse2MeterClient {
 			readfile.readfile(config_map_trans.txt_file_dir);
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

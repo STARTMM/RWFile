@@ -31,12 +31,21 @@ FROM VTD20110307 WHERE Event = 4 and Lon> @Longitude_0 and Lon<@Longitude_max an
 	 * @param latitude
 	 * @return
 	 */
-	
-	public static double latitude_0 = 39.76115800+(40.02637700-39.76115800)*0.1;
-	public static double longtitude_0 = 116.1987630+(116.5577685-116.1987630)*0.1;
-	public static double longtitude_max = 116.1987630+(116.5577685-116.1987630)*0.9;
-	public static double latitude_max = 39.76115800+(40.02637700-39.76115800)*0.9;
-	
+
+	/**
+	 *
+	 1）经度： 116.37826575-(116.5577685-116.1987630)*(12000/30721)=116.2380338
+
+	 2）维度：39.8937675-(40.02637700-39.76115800)*(12000/29524)=39.7859695
+	 */
+//
+//	public static double latitude_0 = 39.76115800+(40.02637700-39.76115800)*0.1;
+//	public static double longtitude_0 = 116.1987630+(116.5577685-116.1987630)*0.1;
+	public static double latitude_0 = 39.7859695;
+	public static double longtitude_0 = 116.2380338;
+//	public static double longtitude_max = 116.1987630+(116.5577685-116.1987630)*0.9;
+//	public static double latitude_max = 39.76115800+(40.02637700-39.76115800)*0.9;
+//
 	public static double earth_equation_r =6378137.0;
 	public static double earth_polar_r = 6356725.0;
 	
@@ -66,39 +75,41 @@ FROM VTD20110307 WHERE Event = 4 and Lon> @Longitude_0 and Lon<@Longitude_max an
 			
 			while((line = reader.readLine())!=null)
 			{
-				String line2 = reader.readLine();
-				String line3 = reader.readLine();
+//				String line2 = reader.readLine();
+//				String line3 = reader.readLine();
 				
-				//读第一行
-				String[]arrl = line.split(" ");
-				//读第二行
-				String[]arrl2 = line2.split(" ");
-				
-				if(arrl.length!=2)
+				//???????
+//				String[]arrl = line.split(" ");
+				//???????
+//				String[]arrl2 = line2.split(" ");
+
+				String[] arrl = line.split(" ");
+				if(arrl.length!=4)
 					continue;
-				if(arrl2.length!=2)
-					continue;
+//				if(arrl2.length!=2)
+//					continue;
 				
 				double lon1,lon2,lat1,lat2;
-				lon1 = getLongtitude(Double.parseDouble(arrl[0]),Double.parseDouble(arrl[1]));
-				lat1 = getLatitude(Double.parseDouble(arrl[0]),Double.parseDouble(arrl[1]));
+				lon1 = getLongtitude(Double.parseDouble(arrl[0]), Double.parseDouble(arrl[1]));
+				lat1 = getLatitude(Double.parseDouble(arrl[0]), Double.parseDouble(arrl[1]));
 				
-				lon2 = getLongtitude(Double.parseDouble(arrl2[0]),Double.parseDouble(arrl2[1]));
-				lat2 = getLatitude(Double.parseDouble(arrl2[0]),Double.parseDouble(arrl2[1]));
+//				lon2 = getLongtitude(Double.parseDouble(arrl2[0]),Double.parseDouble(arrl2[1]));
+//				lat2 = getLatitude(Double.parseDouble(arrl2[0]),Double.parseDouble(arrl2[1]));
 				
 				
 				
-				if(lon1>=24445||lon2>=24445||lat1>=23584||lat2>=23584)
+				if(lon1>=24000||lat1>=24000||lon1<0||lat1<0)
 				{
-					System.out.println("越界啦！");
+//					System.out.println("超出界限");
 					
 				}
 				else{
-					System.out.println(lon1+" "+lat1);
-					System.out.println(lat2+" "+lat2);
+					if(Integer.parseInt(arrl[3])==2)
+						System.out.println(arrl[0]+"-"+arrl[1]+"-"+arrl[2]+"-"+arrl[3]);
+//					System.out.println(lat2+" "+lat2);
 				
-					fw.write(lon1+" "+lat1+"\r\n");
-					fw.write(lon2+" "+lat2+"\r\n");
+					fw.write(lon1+" "+lat1+" "+arrl[2]+" "+arrl[3]+"\r\n");
+//					fw.write(lon2+" "+lat2+"\r\n");
 					fw.write("\r\n");
 				}
 				
