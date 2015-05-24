@@ -20,7 +20,7 @@ public class SpiltFile2Hour extends AbsReadFile {
 	public static String out_file_path = config.split2Hours_out;
 
 	/**
-	 * 读入一个文件，每个文件中包含24小时的数据，根据时间字段，每个小时分为一个文件。
+	 * 露脕脠毛脪禄赂枚脦脛录镁拢卢脙驴赂枚脦脛录镁脰脨掳眉潞卢24脨隆脢卤碌脛脢媒戮脻拢卢赂霉戮脻脢卤录盲脳脰露脦拢卢脙驴赂枚脨隆脢卤路脰脦陋脪禄赂枚脦脛录镁隆拢
 	 */
 	@Override
 	public void dealWithFile(File file) {
@@ -32,7 +32,7 @@ public class SpiltFile2Hour extends AbsReadFile {
 		
 			String line;
 			
-			System.out.println("处理文件"+file.getName());
+			System.out.println("麓娄脌铆脦脛录镁"+file.getName());
 
 			while((line = reader.readLine())!=null)
 			{
@@ -61,7 +61,7 @@ public class SpiltFile2Hour extends AbsReadFile {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//生成实例
+		//脡煤鲁脡脢碌脌媒
 		SpiltFile2Hour rwf = new SpiltFile2Hour();
 		try {
 			rwf.readfile(config.split2Hours_in);
