@@ -21,8 +21,8 @@ public class ReadWktFile extends AbsReadFile {
 				fr = new FileReader(file);
 				BufferedReader reader = new BufferedReader(fr);
 				String line;
-				File fileout = new File(out_file_path+"\\"+file.getName());
-				System.out.println("´¦Àí½ÚµãÎÄ¼þ"+file.getName());
+				File fileout = new File(out_file_path+"/"+file.getName());
+				System.out.println("ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Ä¼ï¿½"+file.getName());
 				FileWriter fw = new FileWriter(fileout);
 				while((line = reader.readLine())!=null)
 				{

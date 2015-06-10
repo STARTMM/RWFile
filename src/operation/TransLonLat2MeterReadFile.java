@@ -84,14 +84,14 @@ FROM VTD20110307 WHERE Event = 4 and Lon> @Longitude_0 and Lon<@Longitude_max an
 //				String[]arrl2 = line2.split(" ");
 
 				String[] arrl = line.split(" ");
-				if(arrl.length!=4)
+				if(arrl.length!=3)
 					continue;
 //				if(arrl2.length!=2)
 //					continue;
 				
 				double lon1,lon2,lat1,lat2;
-				lon1 = getLongtitude(Double.parseDouble(arrl[0]), Double.parseDouble(arrl[1]));
-				lat1 = getLatitude(Double.parseDouble(arrl[0]), Double.parseDouble(arrl[1]));
+				lon1 = getLongtitude(Double.parseDouble(arrl[1]), Double.parseDouble(arrl[2]));
+				lat1 = getLatitude(Double.parseDouble(arrl[1]), Double.parseDouble(arrl[2]));
 				
 //				lon2 = getLongtitude(Double.parseDouble(arrl2[0]),Double.parseDouble(arrl2[1]));
 //				lat2 = getLatitude(Double.parseDouble(arrl2[0]),Double.parseDouble(arrl2[1]));
@@ -104,11 +104,9 @@ FROM VTD20110307 WHERE Event = 4 and Lon> @Longitude_0 and Lon<@Longitude_max an
 					
 				}
 				else{
-					if(Integer.parseInt(arrl[3])==2)
-						System.out.println(arrl[0]+"-"+arrl[1]+"-"+arrl[2]+"-"+arrl[3]);
 //					System.out.println(lat2+" "+lat2);
 				
-					fw.write(lon1+" "+lat1+" "+arrl[2]+" "+arrl[3]+"\r\n");
+					fw.write(lon1+" "+lat1+" "+arrl[0]+" "+"\r\n");
 //					fw.write(lon2+" "+lat2+"\r\n");
 					fw.write("\r\n");
 				}

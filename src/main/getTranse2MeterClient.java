@@ -15,7 +15,6 @@ public class getTranse2MeterClient {
 		TransLonLat2MeterReadFile readfile = new TransLonLat2MeterReadFile();
 		try {
 			readfile.readfile(config_map_trans.txt_file_dir);
-			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
